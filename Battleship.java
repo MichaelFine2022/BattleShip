@@ -1,26 +1,26 @@
 import java.util.Scanner;
 public class Board{
 
-  private String[][] squares;
+  private String[][] boardboardsquares;
 
   public Board(){
-    squares = new String[10][10];
-    for (int i = 0; i < squares.length;i++)
+    boardsquares = new String[10][10];
+    for (int i = 0; i < boardsquares.length;i++)
     {
-      for (int j = 0; j < squares[i].length; j++)
+      for (int j = 0; j < boardsquares[i].length; j++)
       {
-        squares[i][j] = "-";
+        boardsquares[i][j] = "-";
       }
     }
   }
 
   public String toString(){
-    for (int a = 0; a < squares.length; a++)
+    for (int a = 0; a < boardsquares.length; a++)
     {
       System.out.println("");
-      for (int j = 0; j < squares[a].length; j++)
+      for (int b = 0; b < boardsquares[a].length; b++)
       {
-        System.out.print(squares[a][j] + " ");
+        System.out.print(boardsquares[a][b] + " ");
       }
     }
     return "";
@@ -28,18 +28,18 @@ public class Board{
 
   public boolean addShip(int row, int col, int len, boolean horizontal){
 
-    if (row < 0 || col < 0 || row >= squares.length || col >= squares[0].length)
+    if (row < 0 || col < 0 || row >= boardsquares.length || col >= boardsquares[0].length)
       return false;
 
     if(horizontal)
     {
-      if(col + len > squares.length)
+      if(col + len > boardsquares.length)
         return false;
 
      
       for (int i = col; i < col + len; i++)
       {
-        if(!squares[row][i].equals("-"))
+        if(!boardsquares[row][i].equals("-"))
         {
           return false;
         }
@@ -47,18 +47,18 @@ public class Board{
 
       for (int i = col; i < col + len; i++)
       {
-        squares[row][i] = "b";
+        boardsquares[row][i] = "b";
       }
     }
 
     else
     {
-      if(row + len > squares.length)
+      if(row + len > boardsquares.length)
         return false;
 
       for (int i = row; i < row + len; i++)
       {
-        if(!squares[i][col].equals("-"))
+        if(!boardsquares[i][col].equals("-"))
         {
           return false;
         }
@@ -66,7 +66,7 @@ public class Board{
 
       for (int i = row; i < row + len; i++)
       {
-        squares[i][col] = "b";
+        boardsquares[i][col] = "b";
       }
     }
 
@@ -75,13 +75,13 @@ public class Board{
 
   public boolean foundShip(int len){
 
-    for (int r = 0; r < squares.length; r++)
+    for (int r = 0; r < boardsquares.length; r++)
     {
 
-      for (int c = 0; c < squares[r].length; c++)
+      for (int c = 0; c < boardsquares[r].length; c++)
       {
         int count = 0;
-        while (c < squares[r].length && squares[r][c].equals("b"))
+        while (c < boardsquares[r].length && boardsquares[r][c].equals("b"))
         {
          count++;
           c++;
@@ -92,12 +92,12 @@ public class Board{
     }
 
 
-    for (int c = 0; c < squares[0].length; c++)
+    for (int c = 0; c < boardsquares[0].length; c++)
     {
-    for (int r = 0; r < squares.length; r++)
+    for (int r = 0; r < boardsquares.length; r++)
     {
       int count = 0;
-      while(r < squares.length && squares [r][c].equals("b"))
+      while(r < boardsquares.length && boardsquares [r][c].equals("b"))
       {
          count++;
           r++;
@@ -112,29 +112,29 @@ public class Board{
   }
 
   public int shoot(int row, int col){
-    if(row < 0 || col < 0 || row >= squares.length || col >= squares[0].length)
+    if(row < 0 || col < 0 || row >= boardsquares.length || col >= boardsquares[0].length)
       return -1;
 
 
-    if(squares[row][col].equals("b"))
+    if(boardsquares[row][col].equals("b"))
     {
-      squares[row][col] = "x";
+      boardsquares[row][col] = "x";
       return 1;
     }
 
 
-    if(squares[row][col].equals("x") || squares[row][col].equals("m"))
+    if(boardsquares[row][col].equals("x") || boardsquares[row][col].equals("m"))
       return 2;
 
 
-    squares[row][col] = "m";
+    boardsquares[row][col] = "m";
     return 0;
 
     
   }
 
   public boolean gameOver(){
-    for (String[] r : squares)
+    for (String[] r : boardsquares)
     {
       for (String s : r)
       {
