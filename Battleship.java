@@ -154,7 +154,7 @@ public class Battleship
 {
   public static void main(String[] args)
   {
-    // Set up board and print welcome
+    // create board and print welcoming message
     Board b = new Board();
     Scanner scan = new Scanner(System.in);
     System.out.println("Welcome to Battleship!\n");
@@ -168,7 +168,7 @@ public class Battleship
         return;
       if(ans.toLowerCase().equals("a"))
       {
-        // Get parameters for new ship
+        // Get ship parameters 
         System.out.println("Starting in which row?");
         int r = scan.nextInt();
         System.out.println("Starting in which column?");
@@ -180,7 +180,7 @@ public class Battleship
         String d = scan.nextLine();
         boolean h = (d.toLowerCase().equals("h"));
 
-        // Call addShip method and return message based on true/false value
+        // Call addShip method and return message based on the value
         if(b.addShip(r, c, l, h))
         {
           System.out.println("\nNew ship added!\n");
@@ -202,7 +202,7 @@ public class Battleship
       }
     }
 
-    // As long as ships remain, play game
+    // As long as ships remain, the game plays
     while(!b.gameOver())
     {
       System.out.println("Press \"s\" to shoot at a square, \"b\" to see the board, \"q\" to quit.");
@@ -210,13 +210,13 @@ public class Battleship
       if(ans.toLowerCase().equals("q"))
         return;
       else if(ans.toLowerCase().equals("s")){
-        // Get row and column to shoot
+        // Get row and column
         System.out.println("Input row.");
         int r = scan.nextInt();
         System.out.println("Input column.");
         int c = scan.nextInt();
 
-        // Perform shot and store result
+        // Perform shot and store
         int result = b.shoot(r,c);
 
         // Choose message based on result
