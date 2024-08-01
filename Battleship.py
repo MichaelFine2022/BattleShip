@@ -174,7 +174,7 @@ while True:
     else:
         print("Miss!")
 
-    if done = True:
+    if done == True:
         print("Game over!")
         if user_turn:
             print("You win!")
